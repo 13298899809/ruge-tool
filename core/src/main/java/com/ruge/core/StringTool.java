@@ -1,6 +1,5 @@
 package com.ruge.core;
 
-import com.sun.istack.internal.Nullable;
 
 /**
  * @author ruge.wu
@@ -14,7 +13,7 @@ public class StringTool {
      * @return 目标对象为空 true 否则 false
      */
     public static boolean isBlank(Object str) {
-        return (str == null || "".equals(str));
+        return (str == null || "".equals(str) || "".equals(str.toString().trim()));
     }
 
     /**
