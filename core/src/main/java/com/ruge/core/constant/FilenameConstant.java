@@ -1,4 +1,4 @@
-package com.ruge.core;
+package com.ruge.core.constant;
 
 import java.util.Arrays;
 import java.util.List;

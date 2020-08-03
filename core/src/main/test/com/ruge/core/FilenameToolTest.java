@@ -1,5 +1,6 @@
 package com.ruge.core;
 
+import com.ruge.core.constant.FilenameConstant;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -20,7 +21,7 @@ public class FilenameToolTest {
 
     @Test
     public void testIsExtension() {
-        System.out.println(FilenameTool.isExtension("D:\\proc_ide\\Vscode.rar",FilenameConstant.EXCEL));
+        System.out.println(FilenameTool.isExtension("D:\\proc_ide\\Vscode.rar", FilenameConstant.EXCEL));
         System.out.println(FilenameTool.isExtension("D:\\proc_ide\\Vscode.xls",FilenameConstant.EXCEL));
     }
 }
