@@ -115,4 +115,11 @@ public class DateTool {
 
     }
 
+    /**
+     * @param date 当前时间的时间戳
+     * @return 时间格式化 2020-8-4
+     */
+    public static String getDateInstance(long date) {
+        return DateFormat.getDateInstance().format(date);
+    }
 }

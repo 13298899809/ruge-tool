@@ -50,4 +50,10 @@ public class DateToolTest {
         long dateBegin = DateTool.getDayEnd(System.currentTimeMillis());
         System.out.println(dateBegin);
     }
+
+    @Test
+    public void getDateString() {
+        String dateString = DateTool.getDateInstance(System.currentTimeMillis());
+        System.out.println(dateString);
+    }
 }
