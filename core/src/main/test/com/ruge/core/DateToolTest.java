@@ -5,8 +5,6 @@ import org.junit.Test;
 
 import java.util.Date;
 
-import static org.junit.Assert.*;
-
 public class DateToolTest {
 
     @Test
@@ -39,5 +37,17 @@ public class DateToolTest {
     public void addMinutes() {
         Date date = new Date(DateTool.addMinutes(1595210147000L, -10));
         System.out.println(date);
+    }
+
+    @Test
+    public void getDateBegin() {
+        long dateBegin = DateTool.getDayBegin(System.currentTimeMillis());
+        System.out.println(dateBegin);
+    }
+
+    @Test
+    public void getDayEnd() {
+        long dateBegin = DateTool.getDayEnd(System.currentTimeMillis());
+        System.out.println(dateBegin);
     }
 }

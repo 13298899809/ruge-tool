@@ -88,4 +88,31 @@ public class DateTool {
         }
         return days;
     }
+
+    /**
+     * @param date 当前时间的时间戳
+     * @return 获取日初的时间戳
+     */
+    public static long getDayBegin(long date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date(date));
+        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
+                0, 0, 0);
+        return calendar.getTime().getTime();
+
+    }
+
+    /**
+     * @param date 当前时间的时间戳
+     * @return 获取月日初的时间戳
+     */
+    public static long getDayEnd(long date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date(date));
+        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
+                23, 59, 59);
+        return calendar.getTime().getTime();
+
+    }
+
 }
