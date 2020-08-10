@@ -51,9 +51,22 @@ public class DateToolTest {
         System.out.println(dateBegin);
     }
 
+
     @Test
-    public void getDateString() {
+    public void getDateInstance() {
         String dateString = DateTool.getDateInstance(System.currentTimeMillis());
+        System.out.println(dateString);
+    }
+
+    @Test
+    public void getMonthInstance() {
+        String dateString = DateTool.getMonthInstance(System.currentTimeMillis());
+        System.out.println(dateString);
+    }
+
+    @Test
+    public void getYearInstance() {
+        String dateString = DateTool.getYearInstance(System.currentTimeMillis());
         System.out.println(dateString);
     }
 }

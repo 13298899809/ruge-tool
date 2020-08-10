@@ -117,9 +117,46 @@ public class DateTool {
 
     /**
      * @param date 当前时间的时间戳
-     * @return 时间格式化 2020-8-4
+     * @return 时间格式化 2020-08-04
      */
     public static String getDateInstance(long date) {
-        return DateFormat.getDateInstance().format(date);
+        return new SimpleDateFormat("yyyy-MM-dd").format(date);
+    }
+
+    /**
+     * @return 时间格式化 2020-08-04
+     */
+    public static String getDateInstance() {
+        return new SimpleDateFormat("yyyy-MM-dd").format(System.currentTimeMillis());
+    }
+
+    /**
+     * @param date 当前时间的时间戳
+     * @return 时间格式化 2020-08
+     */
+    public static String getMonthInstance(long date) {
+        return new SimpleDateFormat("yyyy-MM").format(date);
+    }
+
+    /**
+     * @return 时间格式化 2020-08
+     */
+    public static String getMonthInstance() {
+        return new SimpleDateFormat("yyyy-MM").format(System.currentTimeMillis());
+    }
+
+    /**
+     * @param date 当前时间的时间戳
+     * @return 时间格式化 2020
+     */
+    public static String getYearInstance(long date) {
+        return new SimpleDateFormat("yyyy").format(date);
+    }
+
+    /**
+     * @return 时间格式化 2020
+     */
+    public static String getYearInstance() {
+        return new SimpleDateFormat("yyyy").format(System.currentTimeMillis());
     }
 }
