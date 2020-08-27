@@ -1,5 +1,7 @@
 package com.ruge.core;
 
+import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class StringToolTest {
@@ -24,5 +26,15 @@ public class StringToolTest {
         System.out.println(StringTool.isNotBlank(null));
         System.out.println(StringTool.isNotBlank(""));
         System.out.println(StringTool.isNotBlank(" "));
+    }
+
+    @Test
+    public void isAllLowerCase() {
+        System.out.println(StringTool.isAllLowerCase("a1a"));
+    }
+
+    @Test
+    public void isAllUpperCase() {
+        System.out.println(StringTool.isAllUpperCase("A2A"));
     }
 }

@@ -128,6 +128,7 @@ public class JsonTool {
         });
     }
 
+
     /**
      * 功能描述：把Object数据转换成较为复杂的List<Map<String, Object>>
      *
@@ -175,7 +176,7 @@ public class JsonTool {
     /**
      * json 转 List<T>
      */
-    public static <T> List<T> jsonToList(String jsonString, Class<T> clazz) {
+    public static <T> List<T> getJsonToListBean(String jsonString, Class<T> clazz) {
         List<T> ts = JSONArray.parseArray(jsonString, clazz);
         return ts;
     }

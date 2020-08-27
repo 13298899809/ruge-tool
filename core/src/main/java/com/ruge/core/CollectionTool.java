@@ -1,9 +1,8 @@
 package com.ruge.core;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import org.springframework.beans.BeanUtils;
+
+import java.util.*;
 
 /**
  * @author ruge.wu
@@ -32,4 +31,6 @@ public class CollectionTool {
             copy.add(iter.next());
         return copy;
     }
+
+
 }

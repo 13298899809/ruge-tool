@@ -69,4 +69,40 @@ public class DateToolTest {
         String dateString = DateTool.getYearInstance(System.currentTimeMillis());
         System.out.println(dateString);
     }
+
+    @Test
+    public void getTimeInterval() throws Exception {
+        /*2020-08-13 13:47:13*/
+        Date date1 = new Date(1597297633000L);
+        /*2020-08-14 02:00:00*/
+        Date date2 = new Date(1597341600000L);
+        /*2020-08-13 22:00:00*/
+        Date date3 = new Date(1597327200000L);
+        /*2020-08-14 04:00:00*/
+        Date date4 = new Date(1597348800000L);
+        float timeInterval = DateTool.getTimeInterval(1597297633000L, 1597341600000L, 1597327200000L, 1597348800000L);
+        System.out.println(timeInterval);
+    }
+
+    @Test
+    public void getMonthBegin() {
+        System.out.println(DateTool.getDateInstance(DateTool.getMonthBegin()));
+    }
+
+    @Test
+    public void getMonthEnd() {
+        System.out.println(DateTool.getDateInstance(DateTool.getMonthEnd()));
+    }
+
+    @Test
+    public void testGetMonthBegin() {
+        System.out.println(DateTool.getDateInstance(DateTool.getMonthBegin(System.currentTimeMillis())));
+
+    }
+
+    @Test
+    public void testGetMonthEnd() {
+        System.out.println(DateTool.getDateInstance(DateTool.getMonthEnd(System.currentTimeMillis())));
+
+    }
 }
