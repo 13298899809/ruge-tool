@@ -26,6 +26,7 @@ public class JsonTool {
     static {
         config = new SerializeConfig();
         config.put(Date.class, new SimpleDateFormatSerializer("yyyy-MM-dd HH:mm:ss"));
+        JSON.DEFAULT_GENERATE_FEATURE |= SerializerFeature.DisableCircularReferenceDetect.getMask();
     }
 
     private static final SerializerFeature[] features = {
@@ -38,7 +39,8 @@ public class JsonTool {
             // Boolean字段如果为null，输出为false，而不是null
             SerializerFeature.WriteNullBooleanAsFalse,
             // 字符类型字段如果为null，输出为""，而不是null
-            SerializerFeature.WriteNullStringAsEmpty
+            SerializerFeature.WriteNullStringAsEmpty,
+            SerializerFeature.DisableCircularReferenceDetect
     };
 
     /**
