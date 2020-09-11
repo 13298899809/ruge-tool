@@ -10,11 +10,15 @@ import static org.junit.Assert.*;
 
 public class FtpToolTest {
 
-    public static final String HOST = "47.93.18.115";
-    public static final Integer PORT = 21;
-    public static final String USER_NAME = "vsftpd";
-    public static final String PASS_WORD = "qwertyui";
+//    public static final String HOST = "47.93.18.115";
+//    public static final Integer PORT = 21;
+//    public static final String USER_NAME = "vsftpd";
+//    public static final String PASS_WORD = "qwertyui";
 
+    public static final String HOST = "sftp.sit.tsp.bjev.com.cn";
+    public static final Integer PORT = 22220;
+    public static final String USER_NAME = "bxbigdatadev";
+    public static final String PASS_WORD = "bx_bigdata#dev#bjev2020";
     public static FTPClient ftpClient;
 
 
@@ -33,7 +37,7 @@ public class FtpToolTest {
             e.printStackTrace();
         }
     }
-    @Before
+//    @Before
     public void testGetConnection1() {
         try {
             FtpTool.getConnection(HOST,USER_NAME,PASS_WORD);

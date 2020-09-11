@@ -11,6 +11,12 @@ import java.util.List;
  * @version 0.0.1
  * @ClassName FtpTool
  * @date 2020.09.07 15:29
+ *
+ *    <dependency>
+ *     <groupId>commons-net</groupId>
+ *     <artifactId>commons-net</artifactId>
+ *     <version>${commons-net.version}</version>
+ *  </dependency>
  */
 public class FtpTool {
 
