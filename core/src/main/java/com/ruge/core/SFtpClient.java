@@ -17,10 +17,10 @@ import java.util.Vector;
 /**
  * @author ruge.wu
  * @version 0.0.1
- * @ClassName SSH2FtpClient
+ * @ClassName SFtpClient
  * @date 2020.09.11 17:26
  */
-public class SSH2FtpClient {
+public class SFtpClient {
 
     private static final Logger loggerMonitor = LoggerFactory.getLogger("monitor");
     /**
@@ -86,6 +86,7 @@ public class SSH2FtpClient {
             File file1 = new File(saveFile);
             fos = new FileOutputStream(file1);
             ftpClient.get(oldFileName, fos);
+
         } catch (Exception e) {
             loggerMonitor.error("下载文件异常............", e.getMessage());
             throw new Exception("download file error............");
@@ -148,19 +149,25 @@ public class SSH2FtpClient {
 
     public static void main(String[] args) {
         try {
-            ChannelSftp sftp = getConnect("sftp.sit.tsp.bjev.com.cn", "22220", "bxbigdatadev", "bx_bigdata#dev#bjev2020");
+            ChannelSftp sftp = getConnect("sftp.pro.tsp.bjev.com.cn", "22220", "bxbigdata", "bx_bigdata#pro#bjev2020");
 
-            Field f =ChannelSftp.class.getDeclaredField("server_version");
-            f.setAccessible(true);
-            f.set(sftp, 2);
 
+            Class cl = ChannelSftp.class;
+
+            Field f1 =cl.getDeclaredField("server_version");
+            f1.setAccessible(true);
+            f1.set(sftp, 2);
+            sftp.setFilenameEncoding("gbk");
+
+            System.out.println(sftp.getServerVersion());
 
             Vector ls = sftp.ls("/upload");
             for (Object item : ls) {
                 System.out.println(item);
-//                ChannelSftp.LsEntry entry = (ChannelSftp.LsEntry) item;
-//                System.out.println(entry.getFilename());
             }
+            download("/upload","./","Violation_Data_Report_20200101.csv","Violation_Data_Report_20200101.csv");
+            download("/upload","./","Music_Data_Report_20200101.csv","Music_Data_Report_20200101.csv");
+            download("/upload","./","ETCP_Data_Report_20200101.csv","ETCP_Data_Report_20200101.csv");
             close();
         } catch (Exception e) {
             // TODO Auto-generated catch block
