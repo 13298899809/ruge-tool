@@ -38,6 +38,7 @@
         <docker.image.prefix>zx</docker.image.prefix>
         <cloud-alibaba.version>0.2.2.RELEASE</cloud-alibaba.version>
 
+        <jedis.version>3.3.0</jedis.version>
         <junit.version>4.13</junit.version>
         <lombok.version>1.18.6</lombok.version>
     </properties>
@@ -135,6 +136,13 @@
                 <groupId>com.jcraft</groupId>
                 <artifactId>jsch</artifactId>
                 <version>0.1.54</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
             </dependency>
 
         </dependencies>
