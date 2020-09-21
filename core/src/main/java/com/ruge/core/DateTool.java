@@ -350,6 +350,22 @@ public class DateTool {
         return Math.round((f / 60000) * 100) / 100;
     }
 
+    /**
+     * @param stime  开始时间
+     * @param etime  结束时间
+     * @param params 时间参数
+     * @return 获取时间参数 是否均在指定区间内存在(多个参数 格式为and)
+     */
+    public static Boolean getTimeExist(Long stime, Long etime, Long... params) {
+        for (Long param : params) {
+            if (param > stime && param < etime) {
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
     /**
      * @return 字符串转时间戳

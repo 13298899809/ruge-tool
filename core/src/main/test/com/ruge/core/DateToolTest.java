@@ -105,4 +105,9 @@ public class DateToolTest {
         System.out.println(DateTool.getDateInstance(DateTool.getMonthEnd(System.currentTimeMillis())));
 
     }
+
+    @Test
+    public void test2() {
+        System.out.println(DateTool.getLongByString("2020-09-21 10:10:10", "yyyy-MM-dd HH:mm:ss"));
+    }
 }
