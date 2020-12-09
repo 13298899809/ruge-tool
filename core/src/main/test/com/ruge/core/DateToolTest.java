@@ -4,6 +4,7 @@ import com.ruge.core.enums.OrderEnum;
 import org.junit.Test;
 
 import java.util.Date;
+import java.util.List;
 
 public class DateToolTest {
 
@@ -109,5 +110,22 @@ public class DateToolTest {
     @Test
     public void test2() {
         System.out.println(DateTool.getLongByString("2020-09-21 10:10:10", "yyyy-MM-dd HH:mm:ss"));
+    }
+
+    @Test
+    public void testGetDays() {
+        System.out.println("日");
+        long startTime = DateTool.addDay(System.currentTimeMillis(), -15);
+        long endTime = DateTool.addDay(System.currentTimeMillis(), -2);
+        List<String> authDate = DateTool.getDays(startTime, endTime, 0L, null, OrderEnum.ASC);
+        authDate.forEach(System.out::println);
+        System.out.println("月");
+        startTime = DateTool.addMonth(System.currentTimeMillis(), -6);
+        endTime = DateTool.addMonth(System.currentTimeMillis(), -1);
+        authDate = DateTool.getMonths(startTime, endTime, 0L, null, OrderEnum.ASC);
+        authDate.forEach(System.out::println);
+        System.out.println("年");
+        String year = DateTool.getAddYearInstance(-1);
+        System.out.println(year);
     }
 }

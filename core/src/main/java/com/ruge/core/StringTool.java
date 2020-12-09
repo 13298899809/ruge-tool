@@ -37,6 +37,7 @@ public class StringTool {
         }
         return true;
     }
+
     /**
      * @param str 目标字符串
      * @return 全部都是大写 是true 否false
@@ -49,5 +50,23 @@ public class StringTool {
             }
         }
         return true;
+    }
+
+    /**
+     * @param str 字符串
+     * @return 字符串为null默认返回""空串
+     */
+    public static String defaultString(Object str) {
+        return str == null ? "" : String.valueOf(str);
+    }
+
+
+    /**
+     * @param str        字符串
+     * @param defaultStr 默认值
+     * @return 字符串为null默认返回""空串
+     */
+    public static String defaultString(Object str, String defaultStr) {
+        return str == null ? defaultStr : String.valueOf(str);
     }
 }

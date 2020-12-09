@@ -15,4 +15,14 @@ public class IdTool {
     public static String uuid() {
         return UUID.randomUUID().toString().replaceAll("-", "");
     }
+
+    /**
+     * 订单号
+     * 生成规则：来源-年月日时分秒-四位随机数
+     * 示例如下：AFAPP202009021520339549
+     */
+    public static String orderId(String perfix) {
+        return perfix+DateTool.getDateInstance("yyyyMMddHHmmss")+uuid().substring(0,4);
+    }
+
 }

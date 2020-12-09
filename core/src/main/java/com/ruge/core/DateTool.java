@@ -210,6 +210,14 @@ public class DateTool {
     }
 
     /**
+     * @param pattern 格式
+     * @return 时间格式化
+     */
+    public static String getDateInstance(String pattern) {
+        return new SimpleDateFormat(pattern).format(System.currentTimeMillis());
+    }
+
+    /**
      * @param date 当前时间的时间戳
      * @return 时间格式化 2020-08-04
      */
