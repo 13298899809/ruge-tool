@@ -7,7 +7,6 @@ import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.SimpleDateFormatSerializer;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.Date;
 import java.util.List;
