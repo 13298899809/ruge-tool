@@ -222,6 +222,14 @@ public class DateTool {
     }
 
     /**
+     * @param pattern 格式
+     * @return 时间格式化
+     */
+    public static String getDateInstance(Object date, String pattern) {
+        return new SimpleDateFormat(pattern).format(date);
+    }
+
+    /**
      * @param date 当前时间的时间戳
      * @return 时间格式化 2020-08-04
      */

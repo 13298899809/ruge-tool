@@ -1,10 +1,15 @@
 package com.ruge.core;
 
+import cn.hutool.crypto.digest.MD5;
 import com.ruge.core.enums.OrderEnum;
+import com.ruge.core.sign.MD5Util;
+import lombok.SneakyThrows;
 import org.junit.Test;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class DateToolTest {
 
@@ -127,5 +132,14 @@ public class DateToolTest {
         System.out.println("年");
         String year = DateTool.getAddYearInstance(-1);
         System.out.println(year);
+    }
+
+    @Test
+    public void testGetDateInstance() {
+        String dateInstance1 = DateTool.getDateInstance(System.currentTimeMillis(), "yyyy-MM-dd HH:mm");
+        System.out.println(dateInstance1);
+        String dateInstance2 = DateTool.getDateInstance(new Date(), "yyyy-MM-dd HH:mm");
+        System.out.println(dateInstance2);
+
     }
 }
