@@ -209,7 +209,7 @@ public class FtpTool {
             File[] files = file.listFiles();
             if (null != files) {
                 for (File f : files) {
-                    if (f.isDirectory() && !f.getName().equals(".") && !f.getName().equals("..")) {
+                    if (f.isDirectory() && !".".equals(f.getName()) && !"..".equals(f.getName())) {
                         uploadDir(remotePath + "/" + f.getName(), f.getPath());
                     } else if (f.isFile()) {
                         upload(remotePath + "/" + f.getName(), f);
@@ -282,7 +282,7 @@ public class FtpTool {
         FTPFile[] ftpFiles = ftpClient.listFiles(remotePath);
         for (int i = 0; ftpFiles != null && i < ftpFiles.length; i++) {
             FTPFile ftpFile = ftpFiles[i];
-            if (ftpFile.isDirectory() && !ftpFile.getName().equals(".") && !ftpFile.getName().equals("..")) {
+            if (ftpFile.isDirectory() && !".".equals(ftpFile.getName()) && !"..".equals(ftpFile.getName())) {
                 downloadDir(remotePath + "/" + ftpFile.getName(), localPath + "/" + ftpFile.getName());
             } else {
                 download(remotePath + "/" + ftpFile.getName(), new File(localPath + "/" + ftpFile.getName()));

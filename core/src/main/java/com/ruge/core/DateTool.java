@@ -23,7 +23,8 @@ public class DateTool {
      */
     public static long addYear(long date, int year) {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date(date)); // 设置为当前时间
+        // 设置为当前时间
+        calendar.setTime(new Date(date));
         calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) + year);
         return calendar.getTime().getTime();
     }
@@ -35,7 +36,8 @@ public class DateTool {
      */
     public static long addMonth(long date, int month) {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date(date)); // 设置为当前时间
+        // 设置为当前时间
+        calendar.setTime(new Date(date));
         calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) + month);
         return calendar.getTime().getTime();
     }
@@ -114,7 +116,8 @@ public class DateTool {
         tempStart.setTime(start);
         Calendar tempEnd = Calendar.getInstance();
         tempEnd.setTime(end);
-        tempEnd.add(Calendar.DATE, +1);// 日期加1(包含结束)
+        // 日期加1(包含结束)
+        tempEnd.add(Calendar.DATE, +1);
         while (tempStart.before(tempEnd)) {
             days.add(dateFormat.format(tempStart.getTime()));
             tempStart.add(Calendar.DAY_OF_YEAR, 1);
@@ -153,7 +156,8 @@ public class DateTool {
         tempStart.setTime(start);
         Calendar tempEnd = Calendar.getInstance();
         tempEnd.setTime(end);
-        tempEnd.add(Calendar.MONTH, +1);// 日期加1(包含结束)
+        // 日期加1(包含结束)
+        tempEnd.add(Calendar.MONTH, +1);
         while (tempStart.before(tempEnd)) {
             months.add(dateFormat.format(tempStart.getTime()));
             tempStart.add(Calendar.MONTH, 1);
@@ -232,7 +236,8 @@ public class DateTool {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date); // 设置为当前时间
+        // 设置为当前时间
+        calendar.setTime(date);
         calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + day);
         date = calendar.getTime();
         return format.format(date);
@@ -245,7 +250,8 @@ public class DateTool {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date(time);
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date); // 设置为当前时间
+        // 设置为当前时间
+        calendar.setTime(date);
         calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + day);
         date = calendar.getTime();
         return format.format(date);
@@ -273,7 +279,8 @@ public class DateTool {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date); // 设置为当前时间
+        // 设置为当前时间
+        calendar.setTime(date);
         calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) + month);
         date = calendar.getTime();
         return format.format(date);
@@ -286,7 +293,8 @@ public class DateTool {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
         Date date = new Date(time);
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date); // 设置为当前时间
+        // 设置为当前时间
+        calendar.setTime(date);
         calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) + month);
         date = calendar.getTime();
         return format.format(date);
@@ -314,7 +322,8 @@ public class DateTool {
         SimpleDateFormat format = new SimpleDateFormat("yyyy");
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date); // 设置为当前时间
+        // 设置为当前时间
+        calendar.setTime(date);
         calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) + year);
         date = calendar.getTime();
         return format.format(date);
@@ -327,7 +336,8 @@ public class DateTool {
         SimpleDateFormat format = new SimpleDateFormat("yyyy");
         Date date = new Date(time);
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date); // 设置为当前时间
+        // 设置为当前时间
+        calendar.setTime(date);
         calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) + year);
         date = calendar.getTime();
         return format.format(date);
@@ -352,7 +362,8 @@ public class DateTool {
         }
 
         long[] a = {stime1, etime1, stime2, etime2};
-        Arrays.sort(a); //从小到大排序，取第二、第三计算
+        //从小到大排序，取第二、第三计算
+        Arrays.sort(a);
         f = Math.toIntExact(a[2] - a[1]);
 
         return Math.round((f / 60000) * 100) / 100;
@@ -420,23 +431,23 @@ public class DateTool {
         //设置endDate
         Calendar c2 = Calendar.getInstance();
         for (int i = 0; i < num; i++) {
-            HashMap<String, Object> dateMap = new HashMap<String, Object>();
+            HashMap<String, Object> dateMap = new HashMap<>(8);
             //设置start
             //设置为1号,当前日期既为本月第一天
             c.set(Calendar.DAY_OF_MONTH, 1);
             //设置为0点0分0秒
-            c.set(c.get(c.YEAR), c.get(c.MONTH), c.get(c.DAY_OF_MONTH), 0, 0, 0);
+            c.set(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
             //存入年月显示
             dateMap.put("yearMonthStr", format.format(c.getTime()));
             dateMap.put("startDate", c.getTime());
             //将c 设置为下个月
-            c.add(c.DATE, -1);
+            c.add(Calendar.DATE, -1);
 
 
             //设置end 为当前月的月底 23时59分59秒
             c2.set(Calendar.DAY_OF_MONTH, 1);
             //设置时间 23时59分59秒
-            c2.set(c2.get(c.YEAR), c2.get(c.MONTH), c2.get(c.DAY_OF_MONTH), 23, 59, 59);
+            c2.set(c2.get(Calendar.YEAR), c2.get(Calendar.MONTH), c2.get(Calendar.DAY_OF_MONTH), 23, 59, 59);
             //获得当前月最后一天
             c2.add(Calendar.MONTH, 1);
             c2.set(Calendar.DAY_OF_MONTH, 0);
@@ -445,7 +456,7 @@ public class DateTool {
             //获取当前时间的下一个月
             c2.add(Calendar.MONTH, -1);
             //将c2设置为当前时间上一个月
-            c2.set(c.get(c.YEAR), c.get(c.MONTH), c.get(c.DAY_OF_MONTH));
+            c2.set(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
             //放入集合
             maps.add(dateMap);
 

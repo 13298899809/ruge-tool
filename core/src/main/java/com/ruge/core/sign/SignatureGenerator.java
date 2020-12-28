@@ -78,7 +78,7 @@ public class SignatureGenerator {
      * @throws NoSuchAlgorithmException
      */
     public static void main(String[] args) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        Map<String, String> params = new HashMap<>();
+        Map<String, String> params = new HashMap<>(8);
         params.put("appkey", "2368392532");
         params.put("signt", "1598257623356");
         params.put("nonce", "7d286bb7a55122410088c557f0bb2ec93e54");

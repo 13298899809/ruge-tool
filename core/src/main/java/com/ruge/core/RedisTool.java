@@ -21,14 +21,7 @@ public class RedisTool {
 
     public RedisTool(String ip,Integer port,String password) {
         if (pool == null) {
-//            String ip = SysConfigUtil.getSysConfigUtil("redis.properties").getString("redis.host");
-//            int port = SysConfigUtil.getSysConfigUtil("redis.properties").getInt("redis.port");
-//            String password = SysConfigUtil.getSysConfigUtil("redis.properties").getString("redis.password");
             JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-//            jedisPoolConfig.setMaxTotal(SysConfigUtil.getSysConfigUtil("redis.properties").getInt("redis.maxTotal"));
-//            jedisPoolConfig.setMaxIdle(SysConfigUtil.getSysConfigUtil("redis.properties").getInt("redis.maxIdle"));
-//            jedisPoolConfig.setMaxWaitMillis(SysConfigUtil.getSysConfigUtil("redis.properties").getLong("redis.maxWaitMillis"));
-//            jedisPoolConfig.setTestOnBorrow(SysConfigUtil.getSysConfigUtil("redis.properties").getBoolean("redis.testOnBorrow"));
             if (StringTool.isNotBlank(password)) {
                 // redis 设置了密码
                 pool = new JedisPool(jedisPoolConfig, ip, port, 10000, password);

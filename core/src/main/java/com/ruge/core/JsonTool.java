@@ -7,7 +7,6 @@ import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.SimpleDateFormatSerializer;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.Date;
 import java.util.List;
@@ -21,15 +20,15 @@ import java.util.Map;
  */
 public class JsonTool {
 
-    private static final SerializeConfig config;
+    private static final SerializeConfig CONFIG;
 
     static {
-        config = new SerializeConfig();
-        config.put(Date.class, new SimpleDateFormatSerializer("yyyy-MM-dd HH:mm:ss"));
+        CONFIG = new SerializeConfig();
+        CONFIG.put(Date.class, new SimpleDateFormatSerializer("yyyy-MM-dd HH:mm:ss"));
         JSON.DEFAULT_GENERATE_FEATURE |= SerializerFeature.DisableCircularReferenceDetect.getMask();
     }
 
-    private static final SerializerFeature[] features = {
+    private static final SerializerFeature[] FEATURES = {
             // 输出空置字段
             SerializerFeature.WriteMapNullValue,
             // list字段如果为null，输出为[]，而不是null

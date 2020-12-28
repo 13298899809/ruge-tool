@@ -1,6 +1,5 @@
 package com.ruge.core;
 
-import cn.hutool.Hutool;
 import cn.hutool.http.HttpUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -9,12 +8,16 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
+/**
+ * @author: mike.ma
+ * @Date: 2014/6/12
+ */
 @Slf4j
 public class BaiDuMapTool {
     public static final String BAIDU_MAP = "http://api.map.baidu.com/place/v2/search";
     public static final Long DEFAULT_RADIUS = 2000L;
     public static final Long RADIUS = 20000L;
-    public static final String ak = "tY5G3L9XWbdxRqg6QmyPxNTFaiw4R47Q";
+    public static final String AK = "tY5G3L9XWbdxRqg6QmyPxNTFaiw4R47Q";
 
     /**
      * 调用百度地图查询省市区
@@ -30,7 +33,7 @@ public class BaiDuMapTool {
             String query = "银行";
             String output = "json";
             String uri = BAIDU_MAP + "?query=" + query + "&location="
-                    + location + "&radius=" + radius + "&output=" + output + "&ak=" + ak;
+                    + location + "&radius=" + radius + "&output=" + output + "&ak=" + AK;
             log.info("当前url是 {}", uri);
             String result = HttpUtil.createGet(uri).execute().body();
             JSONObject jsonObject = JSON.parseObject(result);

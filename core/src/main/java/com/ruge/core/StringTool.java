@@ -69,4 +69,16 @@ public class StringTool {
     public static String defaultString(Object str, String defaultStr) {
         return str == null ? defaultStr : String.valueOf(str);
     }
+
+    /**
+     * @param str 字符串
+     * @param key 关键字妇产
+     * @return 关键字符串往后的字符
+     */
+    public static String substrIndexToLast(String str, String key) {
+        if (str.contains(key)) {
+            str = str.substring(str.indexOf(key) + 1);
+        }
+        return str;
+    }
 }

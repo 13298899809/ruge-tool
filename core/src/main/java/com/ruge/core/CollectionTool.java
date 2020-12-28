@@ -26,8 +26,9 @@ public class CollectionTool {
      */
     public static <T> List<T> iteratorToList(Iterator<T> iter) {
         List<T> copy = new ArrayList<T>();
-        while (iter.hasNext())
+        while (iter.hasNext()) {
             copy.add(iter.next());
+        }
         return copy;
     }
 

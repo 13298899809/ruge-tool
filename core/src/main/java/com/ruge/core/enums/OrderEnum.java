@@ -7,6 +7,8 @@ package com.ruge.core.enums;
  * @date 2020.07.31 16:08
  */
 public enum OrderEnum {
+    // 降序
     DESC(),
+    //升序
     ASC()
 }

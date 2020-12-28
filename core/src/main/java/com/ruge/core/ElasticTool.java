@@ -51,6 +51,7 @@ import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -72,14 +73,13 @@ public class ElasticTool implements Closeable {
     private static final String TIMESTAMP = "timestamp";
 
 
-    // @Value("${spring.data.elasticsearch.ip}")
+    @Value("${spring.data.elasticsearch.ip}")
     private String ip = "127.0.0.1";
-//    private String ip = "172.20.24.132";
-    // @Value("${spring.data.elasticsearch.port}")
+    @Value("${spring.data.elasticsearch.port}")
     private String port = "9200";
-    // @Value("${spring.data.elasticsearch.username}")
+    @Value("${spring.data.elasticsearch.username}")
     private String userName = "elastic";
-    // @Value("${spring.data.elasticsearch.password}")
+    @Value("${spring.data.elasticsearch.password}")
     private String password = "Arcfox20200817!@#";
 
 
@@ -125,14 +125,6 @@ public class ElasticTool implements Closeable {
             httpClientBuilder.disableAuthCaching();
             return httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider);
         }).setMaxRetryTimeoutMillis(5 * 60 * 1000);
-
-
-//        RestClientBuilder builder = RestClient.builder(httpHosts).setRequestConfigCallback(requestConfigBuilder -> {
-//            requestConfigBuilder.setConnectTimeout(-1);
-//            requestConfigBuilder.setSocketTimeout(-1);
-//            requestConfigBuilder.setConnectionRequestTimeout(-1);
-//            return requestConfigBuilder;
-//        });
         client = new RestHighLevelClient(builder);
     }
 
@@ -327,17 +319,11 @@ public class ElasticTool implements Closeable {
      * @param jsonString
      */
     public void addDocByJson(String indexName, String typeName, String id, String jsonString) throws IOException {
-//        if (!JsonValidator.validate(jsonString)) {
-//            LOGGER.error("非法的json字符串，操作失败！");
-//            return;
-//        }
         if (!checkIndexExists(indexName)) {
             createIndex(indexName, typeName);
         }
         IndexRequest request = new IndexRequest(indexName, typeName, id).source(jsonString, XContentType.JSON);
-        // request的opType默认是INDEX(传入相同id会覆盖原document，CREATE则会将旧的删除)
-        // request.opType(DocWriteRequest.OpType.CREATE)
-        IndexResponse response = null;
+        IndexResponse response;
         try {
             response = client.index(request, RequestOptions.DEFAULT);
 
@@ -370,16 +356,10 @@ public class ElasticTool implements Closeable {
     }
 
     public void addDocByJson(String indexName, String typeName, String id, Map<String, Object> jsonString) throws IOException {
-//        if (!JsonValidator.validate(jsonString)) {
-//            LOGGER.error("非法的json字符串，操作失败！");
-//            return;
-//        }
         if (!checkIndexExists(indexName)) {
             createIndex(indexName, typeName);
         }
         IndexRequest request = new IndexRequest(indexName, typeName, id).source(jsonString);
-        // request的opType默认是INDEX(传入相同id会覆盖原document，CREATE则会将旧的删除)
-        // request.opType(DocWriteRequest.OpType.CREATE)
         IndexResponse response = null;
         try {
             response = client.index(request, RequestOptions.DEFAULT);
@@ -422,7 +402,7 @@ public class ElasticTool implements Closeable {
      * @throws IOException
      */
     public Map<String, Object> getDocument(String index, String type, String id) throws IOException {
-        Map<String, Object> resultMap = new HashMap<>();
+        Map<String, Object> resultMap = new HashMap<>(8);
         GetRequest request = new GetRequest(index, type, id);
         // 实时(否)
         request.realtime(false);
@@ -443,7 +423,8 @@ public class ElasticTool implements Closeable {
         }
 
         if (Objects.nonNull(response)) {
-            if (response.isExists()) { // 文档存在      
+            // 文档存在
+            if (response.isExists()) {
                 resultMap = response.getSourceAsMap();
             } else {
                 // 处理未找到文档的方案。 请注意，虽然返回的响应具有404状态代码，但仍返回有效的GetResponse而不是抛出异常。
@@ -542,10 +523,6 @@ public class ElasticTool implements Closeable {
      * @throws IOException
      */
     public void updateDocByJson(String index, String type, String id, String jsonString) throws IOException {
-       /* if (!JsonValidator.validate(jsonString)) {
-            LOGGER.error("非法的json字符串，操作失败！");
-            return;
-        }*/
         if (!checkIndexExists(index)) {
             createIndex(index, type);
         }
@@ -978,7 +955,6 @@ public class ElasticTool implements Closeable {
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder().size(0);
         searchSourceBuilder.query(queryBuilder);
         searchSourceBuilder.sort(new ScoreSortBuilder().order(SortOrder.DESC));
-//        searchSourceBuilder.sort(new FieldSortBuilder("_uid").order(SortOrder.ASC));
         request.source(searchSourceBuilder);
         return client.search(request, RequestOptions.DEFAULT);
     }
