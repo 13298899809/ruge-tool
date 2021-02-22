@@ -11,4 +11,5 @@ public class DateConstant {
     public static final Long DATE_TIME_DAY = 1000 * 60 * 60 * 24L;
     public static final Long DATE_TIME_HOUR = 1000 * 60 * 60L;
     public static final Long DATE_TIME_MIN = 1000 * 60L;
+    public static final Long DATE_INSTANCE = System.currentTimeMillis();
 }

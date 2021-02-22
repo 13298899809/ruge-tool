@@ -17,6 +17,18 @@ import java.util.*;
 public class DateTool {
 
     /**
+     * @param year 变动的年数，参数小于0为减法
+     * @return 对当前时间做天数的操作
+     */
+    public static long addYear(int year) {
+        Calendar calendar = Calendar.getInstance();
+        // 设置为当前时间
+        calendar.setTime(new Date());
+        calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) + year);
+        return calendar.getTime().getTime();
+    }
+
+    /**
      * @param date 当前时间
      * @param year 变动的年数，参数小于0为减法
      * @return 对当前时间做天数的操作
@@ -26,6 +38,18 @@ public class DateTool {
         // 设置为当前时间
         calendar.setTime(new Date(date));
         calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) + year);
+        return calendar.getTime().getTime();
+    }
+
+    /**
+     * @param month 变动的月数，参数小于0为减法
+     * @return 对当前时间做天数的操作
+     */
+    public static long addMonth(int month) {
+        Calendar calendar = Calendar.getInstance();
+        // 设置为当前时间
+        calendar.setTime(new Date());
+        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH) + month);
         return calendar.getTime().getTime();
     }
 
@@ -43,6 +67,15 @@ public class DateTool {
     }
 
     /**
+     * @param day 变动的天数，参数小于0为减法
+     * @return 对当前时间做天数的操作
+     */
+    public static long addDay(int day) {
+        return System.currentTimeMillis() + day * DateConstant.DATE_TIME_DAY;
+    }
+
+
+    /**
      * @param date 当前时间
      * @param day  变动的天数，参数小于0为减法
      * @return 对当前时间做天数的操作
@@ -52,6 +85,15 @@ public class DateTool {
     }
 
     /**
+     * @param hour 变动的小时，参数小于0为减法
+     * @return 对当前时间做小时的操作
+     */
+    public static long addHour(int hour) {
+        return DateConstant.DATE_INSTANCE + hour * DateConstant.DATE_TIME_HOUR;
+    }
+
+
+    /**
      * @param date 当前时间
      * @param hour 变动的小时，参数小于0为减法
      * @return 对当前时间做小时的操作
@@ -59,6 +101,15 @@ public class DateTool {
     public static long addHour(long date, int hour) {
         return date + hour * DateConstant.DATE_TIME_HOUR;
     }
+
+    /**
+     * @param minutes 变动的分钟，参数小于0为减法
+     * @return 对当前时间做分钟的操作
+     */
+    public static long addMinutes(int minutes) {
+        return DateConstant.DATE_INSTANCE + minutes * DateConstant.DATE_TIME_MIN;
+    }
+
 
     /**
      * @param date    当前时间
@@ -213,6 +264,7 @@ public class DateTool {
         return new SimpleDateFormat("yyyy-MM-dd").format(System.currentTimeMillis());
     }
 
+
     /**
      * @param pattern 格式
      * @return 时间格式化
@@ -225,16 +277,45 @@ public class DateTool {
      * @param pattern 格式
      * @return 时间格式化
      */
-    public static String getDateInstance(Object date, String pattern) {
+    public static String getDateInstance(Date date, String pattern) {
         return new SimpleDateFormat(pattern).format(date);
+    }
+
+    /**
+     * @param pattern 格式
+     * @return 时间格式化
+     */
+    public static String getDateInstance(Long date, String pattern) {
+        return new SimpleDateFormat(pattern).format(new Date(date));
     }
 
     /**
      * @param date 当前时间的时间戳
      * @return 时间格式化 2020-08-04
      */
-    public static String getDateInstance(long date) {
+    public static String getDateInstance(Long date) {
         return new SimpleDateFormat("yyyy-MM-dd").format(date);
+    }
+
+    /**
+     * @return 时间格式化 2020-08-04
+     */
+    public static String getDateTimeInstance() {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(System.currentTimeMillis());
+    }
+
+    /**
+     * @return 时间格式化 2020-08-04
+     */
+    public static String getDateTimeInstance(Long date) {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+    }
+
+    /**
+     * @return 时间格式化 2020-08-04
+     */
+    public static String getDateTimeInstance(Date date) {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date.getTime());
     }
 
     /**
